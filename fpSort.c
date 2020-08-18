@@ -29,7 +29,7 @@ pointer to an integer.
 ************************************************************************************/
 int bubbleSort(int arr[], int size, int (*compare)(int a, int b))
 {
-    for (int i = 0; i < size - 1; i++)
+    for (int i = 0; i < size; i++)
         for (int j = 0; j < size - 1; j++)
             if ((*compare)(arr[j], arr[j + 1]))
                 swap(&arr[j], &arr[j + 1]);
@@ -45,7 +45,7 @@ int main(int argc, char const *argv[])
     int argv_offset = 2;
     int size = argc - argv_offset;
 
-    if (argc < 2)
+    if (argc <= 2 || (strcmp(argv[1], "-a") != 0 && strcmp(argv[1], "-d") != 0))
     {
         usage();
         return EXIT_FAILURE;
@@ -65,5 +65,5 @@ int main(int argc, char const *argv[])
         printf("%d ", arr[i]);
     printf("\n");
 
-    return 0;
+    return EXIT_SUCCESS;
 }

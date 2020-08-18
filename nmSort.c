@@ -2,45 +2,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-void merge(int arr[], int p, int q, int r)
+void bubbleSort(int arr[], int size)
 {
-    int n1 = q - p + 1;
-    int n2 = r - q;
-
-    int L[n1], M[n2];
-
-    for (int i = 0; i < n1; i++)
-        L[i] = arr[p + i];
-    for (int j = 0; j < n2; j++)
-        M[j] = arr[q + 1 + j];
-
-    int i = 0, j = 0, k = p;
-
-    while (i < n1 && j < n2)
+    for (int i = 0; i < size; i++)
     {
-        if (L[i] <= M[j])
-            arr[k++] = L[i++];
-        else
-            arr[k++] = M[j++];
-    }
-
-    while (i < n1)
-        arr[k++] = L[i++];
-
-    while (j < n2)
-        arr[k++] = M[j++];
-}
-
-void mergeSort(int arr[], int l, int r)
-{
-    if (l < r)
-    {
-        int m = l + (r - l) / 2;
-
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
-
-        merge(arr, l, m, r);
+        for (int j = 0; j < size - 1; j++)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
     }
 }
 
@@ -51,10 +25,10 @@ void usage()
 
 int main(int argc, char const *argv[])
 {
-    int argv_offset = 2;
-    int size = argc - argv_offset;
+    int argvOffset = 2;
+    int size = argc - argvOffset;
 
-    if (argc < 2)
+    if (argc <= 2 || (strcmp(argv[1], "-a") != 0 && strcmp(argv[1], "-d") != 0))
     {
         usage();
         return EXIT_FAILURE;
@@ -62,9 +36,9 @@ int main(int argc, char const *argv[])
 
     int arr[size];
     for (int i = 0; i < size; i++)
-        arr[i] = atoi(argv[i + argv_offset]);
+        arr[i] = atoi(argv[i + argvOffset]);
 
-    mergeSort(arr, 0, size - 1);
+    bubbleSort(arr, size);
 
     if (strcmp(argv[1], "-a") == 0)
         for (int i = 0; i < size; i++)
@@ -76,5 +50,5 @@ int main(int argc, char const *argv[])
 
     printf("\n");
 
-    return 0;
+    return EXIT_SUCCESS;
 }

@@ -90,6 +90,22 @@ void print(string arr[], int size, char const *argv)
     cout << endl;
 }
 
+int checkInt(int argc, char const *argv[])
+{
+    for (int i = 0; i < argc; i++)
+        if (strspn(argv[i], "0123456789") != strlen(argv[i]))
+            return 0;
+    return 1;
+}
+
+int checkDouble(int argc, char const *argv[])
+{
+    for (int i = 0; i < argc; i++)
+        if (strspn(argv[i], ".0123456789") != strlen(argv[i]))
+            return 0;
+    return 1;
+}
+
 void usage()
 {
     cout << "Usage: ./foSort [-a/-d] [<integers>/<decimals>/<strings>]" << endl;
@@ -100,13 +116,13 @@ int main(int argc, char const *argv[])
     int argv_offset = 2;
     int size = argc - argv_offset;
 
-    if (argc < 2)
+    if (argc <= 2 || (strcmp(argv[1], "-a") != 0 && strcmp(argv[1], "-d") != 0))
     {
         usage();
         return EXIT_FAILURE;
     }
 
-    if (strspn(argv[2], "0123456789") == strlen(argv[2]))
+    if (checkInt(argc, argv))
     {
         int arr[size];
         for (int i = 0; i < size; i++)
@@ -116,7 +132,7 @@ int main(int argc, char const *argv[])
 
         print(arr, size, argv[1]);
     }
-    else if (strspn(argv[2], ".0123456789") == strlen(argv[2]))
+    else if (checkDouble(argc, argv))
     {
         double arr[size];
         for (int i = 0; i < size; i++)
