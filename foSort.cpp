@@ -92,7 +92,7 @@ void print(string arr[], int size, char const *argv)
 
 int checkInt(int argc, char const *argv[])
 {
-    for (int i = 0; i < argc; i++)
+    for (int i = 2; i < argc; i++)
         if (strspn(argv[i], "0123456789") != strlen(argv[i]))
             return 0;
     return 1;
@@ -100,7 +100,7 @@ int checkInt(int argc, char const *argv[])
 
 int checkDouble(int argc, char const *argv[])
 {
-    for (int i = 0; i < argc; i++)
+    for (int i = 2; i < argc; i++)
         if (strspn(argv[i], ".0123456789") != strlen(argv[i]))
             return 0;
     return 1;
@@ -145,6 +145,7 @@ int main(int argc, char const *argv[])
     else
     {
         string arr[size];
+        printf("Hel");
         for (int i = 0; i < size; i++)
             arr[i] = (string)argv[i + argv_offset];
 
