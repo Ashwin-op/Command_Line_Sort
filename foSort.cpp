@@ -93,7 +93,7 @@ void print(string arr[], int size, char const *argv)
 int checkInt(int argc, char const *argv[])
 {
     for (int i = 2; i < argc; i++)
-        if (strspn(argv[i], "0123456789") != strlen(argv[i]))
+        if (strspn(argv[i], "-0123456789") != strlen(argv[i]))
             return 0;
     return 1;
 }
@@ -101,7 +101,7 @@ int checkInt(int argc, char const *argv[])
 int checkDouble(int argc, char const *argv[])
 {
     for (int i = 2; i < argc; i++)
-        if (strspn(argv[i], ".0123456789") != strlen(argv[i]))
+        if (strspn(argv[i], ".-0123456789") != strlen(argv[i]))
             return 0;
     return 1;
 }
