@@ -145,7 +145,6 @@ int main(int argc, char const *argv[])
     else
     {
         string arr[size];
-        printf("Hel");
         for (int i = 0; i < size; i++)
             arr[i] = (string)argv[i + argv_offset];
 
