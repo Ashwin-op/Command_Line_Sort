@@ -108,7 +108,7 @@ int checkDouble(int argc, char const *argv[])
 
 void usage()
 {
-    cout << "Usage: ./foSort [-a/-d] [<integers>/<decimals>/<strings>]" << endl;
+    cout << "Usage: ./foSort [-a|-d] [<integers>|<decimals>|<strings>]" << endl;
 }
 
 int main(int argc, char const *argv[])

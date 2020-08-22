@@ -20,7 +20,7 @@ void bubbleSort(int arr[], int size)
 
 void usage()
 {
-    printf("Usage: ./nmSort [-a/-d] <integers>\n");
+    printf("Usage: ./nmSort [-a|-d] <integers>\n");
 }
 
 int main(int argc, char const *argv[])

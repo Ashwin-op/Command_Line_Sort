@@ -37,7 +37,7 @@ int bubbleSort(int arr[], int size, int (*compare)(int a, int b))
 
 void usage()
 {
-    printf("Usage: ./fpSort [-a/-d] <integers>\n");
+    printf("Usage: ./fpSort [-a|-d] <integers>\n");
 }
 
 int main(int argc, char const *argv[])
