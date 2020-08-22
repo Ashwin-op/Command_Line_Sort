@@ -3,7 +3,7 @@
 
 using namespace std;
 
-template <class T>
+template <typename T>
 void bubbleSort(T arr[], int size)
 {
     for (int i = 0; i < size; i++)
@@ -20,7 +20,7 @@ void bubbleSort(T arr[], int size)
     }
 }
 
-template <class T>
+template <typename T>
 void sortUtil(T arr[], int size, char const *argv)
 {
     bubbleSort(arr, size);
